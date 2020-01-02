@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件测试</title>
+    <link rel="icon" href="/static/pingpang.ico" type="image/x-icon"/>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            padding-bottom: 10px;
+        }
+
+        #target {
+            min-height: 200px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        .popover-content form {
+            margin: 0 auto;
+            width: 213px;
+        }
+
+        .popover-content form .btn {
+            margin-right: 10px
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="span6">
+            <div class="clearfix">
+                <h2>Your Form</h2>
+                <hr>
+                <div id="build">
+                    <form id="target" class="form-horizontal" method="post"
+                          action="{{ url_for('.uploadDataCollection') }}"
+                          enctype="multipart/form-data">
+                        <fieldset>
+                            <div id="legend" class="">
+                                <legend class="">上传文件</legend>
+                            </div>
+                            <br>
+                            <div class="control-group">
+                                <!-- File Upload -->
+                                <div class="controls">
+                                    <input class="input-file" id="fileInput"  name="file" type="file">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="control-group">
+
+                                <!-- Text input-->
+                                <label class="control-label" for="input01">测试人员名字-路径</label>
+                                <div class="controls">
+                                    <input type="text" value="testUserName" name="namePath" class="input-xlarge">
+                                    <p class="help-block"></p>
+                                </div>
+
+                                 <!-- Text input-->
+                                <label class="control-label" for="input01">动作名称-路径</label>
+                                <div class="controls">
+                                    <input type="text" value="testAction" name="actionPath" class="input-xlarge">
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <!-- Text input-->
+                                <label class="control-label" for="input01">测试日期-路径</label>
+                                <div class="controls">
+                                    <input type="text" value="testDate" name="datePath" class="input-xlarge">
+                                    <p class="help-block"></p>
+                                </div>
+
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-default">提交</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    {% if message=='success' %}
+        <p>{{ message }}</p>
+    {% endif %}
+</div>
+</body>
+</html>

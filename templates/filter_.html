@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    如果没有传递图片参数，将使用默认值图片
+    <img src={{ avater|default('https://www.baidu.com/img/bd_logo1.png')}} alt="">
+    <br>
+
+    <p>
+        (过滤列表长度)书的数目：{{ books|length}}  <br>
+        <table>
+            <thead>
+            <td>书名</td>
+            <td>作者</td>
+            <td>价格</td>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.autor }}</td>
+                        <td>{{ book.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </p>
+</body>
+</html>

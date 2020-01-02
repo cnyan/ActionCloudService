@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="color: #564;">hello index</h1>
+    <p>用户名：{{ username }}</p>
+    <p>性别：{{ gender }}</p>
+    <p>年龄：{{ age }}</p>
+    <hr>
+    <p>{{ person.name }}</p>
+    <p>{{ person.gender }}</p>
+    <p>{{ person.age }}</p>
+    <hr>
+    <p>{{ websites['baidu'] }}</p>
+    <hr>
+    <p>
+        if 循环<br>
+        {% if person.age>10 %}
+            <a href={{ websites.baidu }}>百度</a>
+        {% else %}
+            <a href="www.sina.com">sina</a>
+        {% endif %}
+    </p>
+    <hr>
+    <p>
+        for 循环</br>
+        {% for foo in websites %}
+            <h3>{{ foo }}</h3>
+        {% endfor %}
+        <hr>
+        {% for k,v in websites.items() %}
+            <h3>{{ k }}:{{ v }}</h3>
+        {% endfor %}
+    </p>
+    <hr>
+    <p>
+        表格table<br>
+        <table>
+            <thead>
+            <td>书名</td>
+            <td>作者</td>
+            <td>价格</td>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.name }}</td>
+                        <td>{{ book.autor }}</td>
+                        <td>{{ book.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </p>
+    <hr>
+
+</body>
+</html>
