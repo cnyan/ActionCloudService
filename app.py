@@ -650,10 +650,15 @@ def loadJsonWithConfig(fileName):
         data = json.load(json_file)
         return data
 
+# 设置识别模型
+# http://localhost:5001/action/recognition/1
+@app.route('/action/recognition/<string:model>')
+def set_recogintion_model(model):
+    return f'success set model is hmm'
 
 @app.route('/action/getstring')
 def get_string():
-    return 'get successed'
+    return 'get success'
 
 
 @app.route('/user/json', methods=['POST'])
