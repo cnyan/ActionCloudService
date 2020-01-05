@@ -1,0 +1,19 @@
+# Nginx的配置文件在 /etc/nginx/sites-enabled目录的default文件中，
+# 将其备份mv default_init。新的default创建并打开vim default，在里面写入
+
+server {
+  listen 80 default_server; # 80端口需要打开
+  server_name _; #阿里云公网ip
+  access_log   /home/yan/dev/ActionCloudService/log/nginx_access.log;
+  error_log      /home/yan/dev/ActionCloudService/log/nginx_error.log;
+  root            /home/yan/dev/ActionCloudService;
+  location / {
+  include uwsgi_params;
+  uwsgi_pass 127.0.0.1:5000; # 指向uwsgi 所应用的内部地址
+  uwsgi_param UWSGI_PYHOME /home/yan/dev/ActionCloudService/venv; # 虚拟环境目录
+  uwsgi_param UWSGI_CHDIR /home/yan/dev/ActionCloudService; # 应用根目录
+  uwsgi_param UWSGI_SCRIPT app:app; # 启动程序
+  uwsgi_read_timeout 100;
+  client_max_body_size 100M;
+ }
+}
